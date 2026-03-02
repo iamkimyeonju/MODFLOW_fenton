@@ -2,6 +2,8 @@
 
 **Author:** Lijing Wang (lijing.wang@uconn.edu) — University of Connecticut
 
+Co-authored with Claude ai. 
+
 This repository contains a progressive series of Jupyter notebooks that build a data-driven MODFLOW 6 groundwater model for the UConn Forest catchment, from raw data download through steady-state and transient simulation.
 
 ---
@@ -86,38 +88,11 @@ Two datasets are too large for GitHub and must be downloaded and placed manually
 | GLHYMPS 2.0 | `UConn_Forest/GLHYMPS/GLHYMPS.shp` | **~6.6 GB** | [Scholars Portal Dataverse](https://doi.org/10.5683/SP2/TTJNIU) |
 | SoilGrids BDTICM | `UConn_Forest/SoilGrids/BDTICM_M_250m_ll.tif` | **~7.9 GB** | [BNU GlobalChange](http://globalchange.bnu.edu.cn/research/dtb.jsp) |
 
-> **Tip:** These are global datasets. Download them once to your local machine, then upload to Google Drive via the web interface or [Google Drive for Desktop](https://www.google.com/drive/download/). Upload may take 30–60 minutes depending on your connection.
+> **Tip:** These are global datasets. Download them once to your local machine, then upload to Google Drive if you use Google Colab to run MODFLOW(https://www.google.com/drive/download/). 
+
 
 ### 4. Run notebooks in order
-Each notebook begins with a **Google Colab setup cell** that mounts your Drive and sets the working directory automatically. Run that cell first, then proceed sequentially from 00 → 06.
-
----
-
-## Study Site
-
-**Fenton River watershed**, Mansfield, CT
-- Area: 47.39 km²
-- USGS stream gauge: [01121330](https://waterdata.usgs.gov/monitoring-location/01121330/) — Fenton River at Mansfield, CT
-- Model domain: ~2.7 × 2.8 km, 10 m resolution (324 × 311 cells)
-- Two model layers: regolith (variable, ~1–20 m) and bedrock
-- Simulation period (notebook 06): January 2020 – December 2025 (72 monthly stress periods)
-
----
-
-## Model Architecture (Notebooks 05–06)
-
-| Component | Package | Description |
-|---|---|---|
-| Grid | DIS | 2 layers, 10 m, structured |
-| K Layer 1 | NPF | Spatially variable (SSURGO Ksat) |
-| K Layer 2 | NPF | Spatially variable (GLHYMPS) |
-| Layer geometry | DIS | SSURGO soil depth (L1), SoilGrids BDTICM (L2 base) |
-| Storage | STO | Sy from SSURGO (L1), convertible both layers |
-| Surface drainage | DRN | Activates when head ≥ land surface |
-| Recharge / ET | UZF | Unsaturated zone with kinematic wave, degree-day snow model |
-| Pumping | WEL | Single hypothetical well |
-| Solver | IMS | Newton–Raphson with under-relaxation |
-| Time stepping | TDIS + ATS | Monthly periods, adaptive sub-stepping |
+Each notebook begins with a **Google Colab setup cell** that mounts your Drive and sets the working directory automatically. Run that cell first, then proceed sequentially from 00, 01, 02 for ERTH 4735, and 00, 03, 04, 05, 06 for ERTH 4750. 
 
 ---
 
