@@ -1,8 +1,6 @@
 # UConn MODFLOW Lab — ERTH 4750
 
 **Author:** Lijing Wang (lijing.wang@uconn.edu) — University of Connecticut
-**Course:** ERTH 4750 — Hydrogeology Lab
-**Study site:** Fenton River watershed, UConn Forest, Mansfield, CT
 
 This repository contains a progressive series of Jupyter notebooks that build a data-driven MODFLOW 6 groundwater model for the UConn Forest catchment, from raw data download through steady-state and transient simulation.
 
@@ -40,12 +38,14 @@ UConn_MODFLOW_Lab/
 ---
 
 ## Notebooks
+00-02 is for ERTH 4735 Introduction to Groundwater Hydrology
+03-06 is for ERTH 4750 Machine Learning and Numerical Modeling for Hydrology
 
 | # | Notebook | Key concepts |
 |---|---|---|
 | 00 | MODFLOW Installation | Compile mf6 from source with `mfpymake`; save to Google Drive |
 | 01 | Steady-State Example | Structured grid, CHD, RCH, flopy basics |
-| 02 | Calibration & Prediction | Parameter estimation, sensitivity |
+| 02 | Model Calibration | Manual Calibration only |
 | 03 | Model Input Data Prep | USGS 3DEP DEM, NHDPlus, SSURGO, GLHYMPS, SoilGrids BDTICM |
 | 04 | Baseflow Separation | Eckhardt (2008) recursive filter, BFI, USGS NWIS download |
 | 05 | Steady-State MODFLOW | Spatially variable K/Sy, DRN surface drain, Newton solver |
@@ -58,26 +58,38 @@ UConn_MODFLOW_Lab/
 ### 1. Install MODFLOW 6 (one-time)
 Run **`00_MODFLOW_Installation.ipynb`** to compile `mf6` and save it to your Google Drive at `/content/drive/MyDrive/mf6`.
 
-### 2. Upload this repository to Google Drive
-Copy the entire repository to:
+### 2. Clone this repository into Google Drive
+Open a Colab notebook, mount your Drive, then clone directly into it:
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
 ```
-/content/drive/MyDrive/MODFLOW_Lab/
+
+```bash
+!git clone https://github.com/lijingwang/UConn_MODFLOW_Lab \
+    /content/drive/MyDrive/MODFLOW_Lab
 ```
-So that the `UConn_Forest/` folder is at:
+
+This places all notebooks and small data files at:
 ```
 /content/drive/MyDrive/MODFLOW_Lab/UConn_Forest/
 ```
 
-### 3. Upload large data files manually (not in this repo)
-Two large datasets must be downloaded separately and placed inside `UConn_Forest/`:
+Alternatively, download the repo as a ZIP from GitHub (`Code → Download ZIP`), unzip, and upload the folder to your Drive using the [Google Drive web interface](https://drive.google.com).
 
-| Dataset | Folder | Size | Download |
+### 3. Download large data files separately (not in this repo)
+Two datasets are too large for GitHub and must be downloaded and placed manually inside `UConn_Forest/`:
+
+| Dataset | Target path (in Drive) | Size | Download |
 |---|---|---|---|
-| GLHYMPS 2.0 | `GLHYMPS/GLHYMPS.shp` | ~200 MB | [Scholars Portal Dataverse](https://doi.org/10.5683/SP2/TTJNIU) |
-| SoilGrids BDTICM | `SoilGrids/BDTICM_M_250m_ll.tif` | ~500 MB (global crop) | [BNU GlobalChange](http://globalchange.bnu.edu.cn/research/dtb.jsp) |
+| GLHYMPS 2.0 | `UConn_Forest/GLHYMPS/GLHYMPS.shp` | **~6.6 GB** | [Scholars Portal Dataverse](https://doi.org/10.5683/SP2/TTJNIU) |
+| SoilGrids BDTICM | `UConn_Forest/SoilGrids/BDTICM_M_250m_ll.tif` | **~7.9 GB** | [BNU GlobalChange](http://globalchange.bnu.edu.cn/research/dtb.jsp) |
+
+> **Tip:** These are global datasets. Download them once to your local machine, then upload to Google Drive via the web interface or [Google Drive for Desktop](https://www.google.com/drive/download/). Upload may take 30–60 minutes depending on your connection.
 
 ### 4. Run notebooks in order
-Each notebook begins with a **Google Colab setup cell** that mounts your Drive and sets the working directory automatically. Run that cell first, then proceed.
+Each notebook begins with a **Google Colab setup cell** that mounts your Drive and sets the working directory automatically. Run that cell first, then proceed sequentially from 00 → 06.
 
 ---
 
