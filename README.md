@@ -2,9 +2,26 @@
 
 **Author:** Lijing Wang (lijing.wang@uconn.edu) — University of Connecticut
 
-Co-authored with Claude ai. 
+Co-authored with Claude ;) 
 
 This repository contains a progressive series of Jupyter notebooks that build a data-driven MODFLOW 6 groundwater model for the UConn Forest catchment, from raw data download through steady-state and transient simulation.
+
+---
+
+## Notebooks
+00-02 is for ERTH 4735 Introduction to Groundwater Hydrology
+03-06 is for ERTH 4750 Machine Learning and Numerical Modeling for Hydrology
+
+| # | Notebook | Key concepts |
+|---|---|---|
+| 00 | MODFLOW Installation | Compile mf6 from source with `mfpymake`; save to Google Drive |
+| 01 | Steady-State Example | Structured grid, CHD, RCH, flopy basics |
+| 02 | Model Calibration | Manual Calibration only |
+| 03 | Model Input Data Prep | USGS 3DEP DEM, NHDPlus, SSURGO, GLHYMPS, SoilGrids BDTICM |
+| 04 | Baseflow Separation | Eckhardt (2008) recursive filter, BFI, USGS NWIS download |
+| 05 | Steady-State MODFLOW | Spatially variable K/Sy, DRN surface drain, Newton solver |
+| 06 | Transient MODFLOW | STO, UZF unsaturated zone ET, monthly stress periods, ATS |
+
 
 ---
 
@@ -39,21 +56,6 @@ UConn_MODFLOW_Lab/
 
 ---
 
-## Notebooks
-00-02 is for ERTH 4735 Introduction to Groundwater Hydrology
-03-06 is for ERTH 4750 Machine Learning and Numerical Modeling for Hydrology
-
-| # | Notebook | Key concepts |
-|---|---|---|
-| 00 | MODFLOW Installation | Compile mf6 from source with `mfpymake`; save to Google Drive |
-| 01 | Steady-State Example | Structured grid, CHD, RCH, flopy basics |
-| 02 | Model Calibration | Manual Calibration only |
-| 03 | Model Input Data Prep | USGS 3DEP DEM, NHDPlus, SSURGO, GLHYMPS, SoilGrids BDTICM |
-| 04 | Baseflow Separation | Eckhardt (2008) recursive filter, BFI, USGS NWIS download |
-| 05 | Steady-State MODFLOW | Spatially variable K/Sy, DRN surface drain, Newton solver |
-| 06 | Transient MODFLOW | STO, UZF unsaturated zone ET, monthly stress periods, ATS |
-
----
 
 ## Getting Started on Google Colab
 
@@ -78,7 +80,6 @@ This places all notebooks and small data files at:
 /content/drive/MyDrive/MODFLOW_Lab/UConn_Forest/
 ```
 
-Alternatively, download the repo as a ZIP from GitHub (`Code → Download ZIP`), unzip, and upload the folder to your Drive using the [Google Drive web interface](https://drive.google.com).
 
 ### 3. Download large data files separately (not in this repo)
 Two datasets are too large for GitHub and must be downloaded and placed manually inside `UConn_Forest/`:
@@ -89,6 +90,9 @@ Two datasets are too large for GitHub and must be downloaded and placed manually
 | SoilGrids BDTICM | `UConn_Forest/SoilGrids/BDTICM_M_250m_ll.tif` | **~7.9 GB** | [BNU GlobalChange](http://globalchange.bnu.edu.cn/research/dtb.jsp) |
 
 > **Tip:** These are global datasets. Download them once to your local machine, then upload to Google Drive if you use Google Colab to run MODFLOW(https://www.google.com/drive/download/). 
+
+
+If you would like to access the predownloaded datasets GLHYMPS.shp or BDTICM_M_250m_ll.tif I prepared, you can go to [this Google Drive folder](https://drive.google.com/drive/folders/1Q9vK35vvwKqqdtFd7s6tAXwKMx_j7zKf?usp=sharing), download them and uplaod to your Google Drive folder. 
 
 
 ### 4. Run notebooks in order
