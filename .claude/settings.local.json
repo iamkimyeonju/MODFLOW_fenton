@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed s/^[[:space:]]*[0-9]*→//)",
+      "Read(//tmp/**)",
+      "Bash(python3:*)",
+      "Bash(find '/mnt/g/My Drive/University of Connecticut/Machine Learning and Numerical Modeling in Hydrology/MODFLOW/UConn_MODFLOW_fenton' -name *06* -o -name *Beaver*)",
+      "Bash(jq \".cells[] | select\\(.id == \"\"head-maps\"\"\\) | .source[]\")",
+      "Bash(python3 -c \":*)"
+    ]
+  }
+}
